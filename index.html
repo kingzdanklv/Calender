@@ -15,13 +15,25 @@
     </header>
     <div class="tools">
       <button id="today">Today</button>
+      <select id="country" aria-label="Holidays for">
+        <option value="IN">🇮🇳 India</option><option value="US">🇺🇸 United States</option><option value="GB">🇬🇧 United Kingdom</option>
+        <option value="CA">🇨🇦 Canada</option><option value="AU">🇦🇺 Australia</option><option value="DE">🇩🇪 Germany</option>
+        <option value="FR">🇫🇷 France</option><option value="JP">🇯🇵 Japan</option><option value="NONE">No holidays</option>
+      </select>
       <button id="theme" aria-label="Theme">🌓</button>
     </div>
 
     <div id="grid" class="grid" role="grid"></div>
 
+    <section id="hols" class="hols">
+      <h2>Holidays this month</h2>
+      <ul id="hol-list" class="hol-list"></ul>
+      <p id="hol-note" class="note"></p>
+    </section>
+
     <section class="day">
       <h2 id="day-title"></h2>
+      <p id="day-hol" class="hol-tag" hidden></p>
       <ul id="list" class="list"></ul>
       <form id="form" class="form">
         <input id="ev-title" placeholder="Add event" aria-label="Event title" required>
