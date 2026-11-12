@@ -76,6 +76,23 @@ function renderMonthHols() {
   $("hol-note").textContent = country === "IN" && !IN_MOVING[y] ? "Festival dates for this year aren't added yet. Only fixed-date holidays are shown." : "";
 }
 
+// Days off = Saturdays + Sundays + holidays that fall on weekdays (a weekend holiday is counted once)
+function renderOff() {
+  const y = view.getFullYear(), m = view.getMonth(), days = new Date(y, m + 1, 0).getDate();
+  let sat = 0, sun = 0, hd = 0, hw = 0;
+  for (let d = 1; d <= days; d++) {
+    const dow = new Date(y, m, d).getDay(), h = holidayOf(`${y}-${pad(m + 1)}-${pad(d)}`);
+    if (dow === 6) sat++; else if (dow === 0) sun++; else if (h) hd++;
+    if (h && (dow === 0 || dow === 6)) hw++;
+  }
+  const notes = [];
+  if (hw) notes.push(`${hw} holiday${hw > 1 ? "s fall" : " falls"} on a weekend and ${hw > 1 ? "are" : "is"} counted once.`);
+  if (country === "IN" && !IN_MOVING[y]) notes.push("Festival dates for this year aren't added, so the holiday count may be low.");
+  $("off").innerHTML = `<div class="off-main"><b>${sat + sun + hd}</b><span>days off in ${view.toLocaleDateString([], { month: "long" })}</span></div>
+    <div class="off-parts"><div><b>${sat}</b><span>Saturdays</span></div><div><b>${sun}</b><span>Sundays</span></div><div><b>${hd}</b><span>Weekday holidays</span></div></div>`
+    + notes.map((n) => `<p class="note">${n}</p>`).join("");
+}
+
 function renderDay() {
   const [y, mo, da] = selected.split("-").map(Number);
   $("day-title").textContent = new Date(y, mo - 1, da).toLocaleDateString([], { weekday: "long", month: "long", day: "numeric" });
@@ -88,7 +105,7 @@ function renderDay() {
   $("list").querySelectorAll(".n").forEach((el, i) => (el.textContent = list[i].title));
 }
 
-const render = () => { renderGrid(); renderMonthHols(); renderDay(); };
+const render = () => { renderGrid(); renderOff(); renderMonthHols(); renderDay(); };
 const refresh = () => { render(); loadHols().then(render); };
 
 /* ---------- Events ---------- */
