@@ -51,9 +51,12 @@ select{padding:10px 12px;border-radius:10px;border:1px solid var(--line);backgro
 
 /* Days off summary */
 .off{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px}
-.off-main{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.off-main{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px;text-align:center}
+.off-main div{display:flex;flex-direction:column;gap:2px}
 .off-main b{font-size:2rem;color:var(--red);line-height:1}
-.off-main span{color:var(--mute)}
+.off-main b.work{color:var(--accent)}
+.off-main b.all{color:var(--ink)}
+.off-main span{color:var(--mute);font-size:.8rem}
 .off-parts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .off-parts div{background:var(--bg);border-radius:12px;padding:8px 10px;display:flex;flex-direction:column}
 .off-parts b{font-size:1.2rem}
