@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calendar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <button id="prev" aria-label="Previous month">‹</button>
+      <h1 id="title"></h1>
+      <button id="next" aria-label="Next month">›</button>
+    </header>
+    <div class="tools">
+      <button id="today">Today</button>
+      <button id="theme" aria-label="Theme">🌓</button>
+    </div>
+
+    <div id="grid" class="grid" role="grid"></div>
+
+    <section class="day">
+      <h2 id="day-title"></h2>
+      <ul id="list" class="list"></ul>
+      <form id="form" class="form">
+        <input id="ev-title" placeholder="Add event" aria-label="Event title" required>
+        <input id="ev-time" type="time" aria-label="Time (optional)">
+        <button type="submit">Add</button>
+      </form>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
