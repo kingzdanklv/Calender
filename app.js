@@ -88,7 +88,8 @@ function renderOff() {
   const notes = [];
   if (hw) notes.push(`${hw} holiday${hw > 1 ? "s fall" : " falls"} on a weekend and ${hw > 1 ? "are" : "is"} counted once.`);
   if (country === "IN" && !IN_MOVING[y]) notes.push("Festival dates for this year aren't added, so the holiday count may be low.");
-  $("off").innerHTML = `<div class="off-main"><b>${sat + sun + hd}</b><span>days off in ${view.toLocaleDateString([], { month: "long" })}</span></div>
+  const off = sat + sun + hd, month = view.toLocaleDateString([], { month: "long" });
+  $("off").innerHTML = `<div class="off-main"><div><b class="work">${days - off}</b><span>working days</span></div><div><b>${off}</b><span>days off</span></div><div><b class="all">${days}</b><span>days in ${month}</span></div></div>
     <div class="off-parts"><div><b>${sat}</b><span>Saturdays</span></div><div><b>${sun}</b><span>Sundays</span></div><div><b>${hd}</b><span>Weekday holidays</span></div></div>`
     + notes.map((n) => `<p class="note">${n}</p>`).join("");
 }
