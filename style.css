@@ -1,0 +1,33 @@
+:root{--bg:#f4f6fa;--card:#fff;--ink:#1c2430;--mute:#6b7685;--line:#e3e8ef;--accent:#2b6cb0;--accent-ink:#fff;--sel:#dbe9f8}
+.dark{--bg:#10151d;--card:#1a212c;--ink:#eef2f7;--mute:#97a3b3;--line:#2a3340;--accent:#5aa2e8;--accent-ink:#0b1220;--sel:#24384f}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;min-height:100vh}
+.app{max-width:520px;margin:0 auto;padding:16px 14px 40px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+h1{font-size:1.3rem;font-weight:600}
+button{border:0;border-radius:10px;padding:10px 14px;font-size:1rem;background:var(--card);color:var(--ink);cursor:pointer;border:1px solid var(--line)}
+button:hover{background:var(--sel)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tools{display:flex;justify-content:space-between;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px}
+.dow{text-align:center;font-size:.75rem;color:var(--mute);padding:4px 0}
+.cell{aspect-ratio:1;border:0;border-radius:10px;background:transparent;padding:2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:1rem}
+.cell.out{color:var(--mute);opacity:.45}
+.cell.sel{background:var(--sel)}
+.cell.today{outline:2px solid var(--accent)}
+.cell.today.sel{background:var(--accent);color:var(--accent-ink)}
+.dots{display:flex;gap:3px;height:5px}
+.dots i{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.cell.today.sel .dots i{background:var(--accent-ink)}
+.day{margin-top:20px}
+h2{font-size:1.05rem;margin-bottom:10px}
+.list{list-style:none;padding:0;display:grid;gap:8px}
+.list li{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.list .t{color:var(--accent);font-size:.85rem;min-width:52px}
+.list .n{flex:1;word-break:break-word}
+.list button{padding:4px 10px;color:var(--mute)}
+.empty{color:var(--mute);padding:6px 2px}
+.form{display:flex;gap:8px;margin-top:12px}
+.form input{min-width:0;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:1rem}
+#ev-title{flex:1}
+.form button{flex:none;background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
